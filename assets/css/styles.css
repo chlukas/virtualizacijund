@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Barlow');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body {
+	font-size: 14px;
+	font-family: 'Barlow', sans-serif !important;
+}
+h2 {
+    font-family: 'Raleway', sans-serif;
+}
+.navbar-brand {
+	font-family: 'Lobster', cursive !important;
+	font-size: 28px !important;
+	opacity: 0.85;
+}
+.slideshow-image {
+	height:450px;
+	filter: grayscale(100);
+	opacity: 0.8;
+}
+.slideshow-caption {
+	background: #2e2e2e;
+	opacity: 0.75;
+}
+
+.teikiamos-paslaugos {
+	background:#343a40;
+	padding-top:60px;
+	padding-bottom:80px;
+}
+.card-image-resize {
+	height:256px;
+	width:256px;
+	filter: grayscale(100);
+}
+.card-image-resize-small {
+	height:64px;
+	width:64px;
+	filter: grayscale(100);
+}
+.card-image-resize-smallest {
+	height:32px;
+	width:32px;
+	filter: grayscale(100);
+}
+.card-image-rotate {
+	transform: rotate(45deg);
+}
+.card {
+	background: transparent !important;
+	border: 0px !important;
+}
+.first-button {
+	margin-top:50px;
+}
+.second-button {
+	margin-top:30px;
+}
+.virtualizacijos-footer {
+	height:200px;
+	padding-top:60px;
+	padding-bottom:60px;
+}
+.skype-buttons {
+	margin-top:5px;
+}
+p {
+	font-size: 16px;
+}
