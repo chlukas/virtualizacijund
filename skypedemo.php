@@ -2,7 +2,6 @@
 
     include_once ('connection.php');
     $query = "SELECT username FROM users ORDER BY id DESC";
-
 ?>
 
 <!doctype html>
