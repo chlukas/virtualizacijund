@@ -1,3 +1,17 @@
+<?php
+
+    include_once ('connection.php');
+
+    if(!empty($_POST['username'])){
+      $username    = mysqli_real_escape_string($link, $_POST['username']);   
+      $sql = "INSERT INTO users (username) VALUES ('$username')";
+      mysqli_query($link, $sql);
+      header("Location:skypedemo.php");
+    } else {
+      mysqli_close($link);
+    }
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -33,6 +47,7 @@
                 Sprendimai
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="telefonija.html">Telefonijos sistema</a>
                 <a class="dropdown-item" href="skype.html">Skype sistema</a>
               </div>
             </li>
@@ -49,10 +64,10 @@
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100 slideshow-image" src="assets/images/one.jpg" alt="First slide">
+          <img class="d-block w-100 slideshow-image" src="assets/images/skype.jpg" alt="First slide">
           <div class="carousel-caption d-none d-md-block slideshow-caption">
-            <h3>Klientų aptarnavimas</h3>
-            <p>Padėsime geriau aptarnauti Jūsų klientus</p>
+            <h3>Skype sistema</h3>
+            <p>Nemokamas ir greitas būdas valdyti savo klientus</p>
           </div>       
         </div>
       </div>
@@ -60,65 +75,16 @@
 
     <div class="container-fluid teikiamos-paslaugos">
       <div class="container">
-        <div class="row">
-          <div class="col-12 text-white">
-            <h2 class="text-center">
-              <img class="card-image-resize-small" src="assets/images/apklausa.png"> Apklausos telefonu
-            </h2>
-            <p>
-              Klientų apklausos telefonu išlieka vienas efektyviausių būdų greitai sužinoti klientų nuomonę apie Jūsų paslaugas ar produktus, surinkti įvairius klientų atsiliepimus ar net sudominti juos. Gerai suformuluoti klausimynai, apmokyti darbuotojai, struktūrizuotas atsakymų surinkimas tolimesnei jų analizei, - nuo šių ir kitų dalykų priklauso apklausų sėkmė. Džiaugsimės galėdami pasidalinti savo patirtimi ir padėti Jums efektyviai ir palyginus nedidelėmis išlaidomis apklausti savo klientus. 
-            </p>
-        </div>
-      </div>
+        <form method="POST" action="add.php">
+          <div class="form-group">
+            <input type="text" class="form-control" name="username" placeholder="Norimas pridėti skype vardas">
+          </div>
+          <button type="submit" class="btn btn-primary col-12">Submit</button>
+        </form>
     </div>
   </div>
 
-    <footer class="footer virtualizacijos-footer bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-3">
-            <p>
-              <b>Paslaugos</b>
-            </p>
-            <p>
-              <a href="aptarnavimas.html" class="text-dark" style="text-decoration: none"> Klientų aptarnavimas </a><br/>
-              <a href="marketingas.html" class="text-dark" style="text-decoration: none"> Pardavimai telefonu </a><br/>
-              <a href="apklausos.html" class="text-dark" style="text-decoration: none"> Klientų apklausos ir lojalumas </a><br/>
-            </p>
-          </div>
-          <div class="col-3">
-           <p>
-              <b>Sprendimai</b>
-            </p>
-            <p>
-              <a href="skype.html" class="text-dark" style="text-decoration: none"> Skype sistema </a><br/>
-            </p>
-          </div>
-          <div class="col-3">
-           <p>
-              <b>Išbandykite gyvai</b>
-            </p>
-            <p>
-              <a href="skypedemo.php" class="text-dark" style="text-decoration: none"> Skype sistema demo </a><br/>
-            </p>
-          </div>
-          <div class="col-3">
-           <p>
-              <b>Mus rasite</b>
-            </p>
-            <p>
-              Didlaukio gatvė 47, Vilnius<br/>
-              Matematikos ir informatikos fakultetas
-            </p>
-          </div>
-          <div class="col-12 text-center">
-            <p>Visos teisės saugomos</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    
-
+    <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>

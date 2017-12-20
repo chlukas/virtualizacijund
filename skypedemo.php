@@ -1,3 +1,10 @@
+<?php
+
+    include_once ('connection.php');
+    $query = "SELECT username FROM users ORDER BY id DESC";
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -33,6 +40,7 @@
                 Sprendimai
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="telefonija.html">Telefonijos sistema</a>
                 <a class="dropdown-item" href="skype.html">Skype sistema</a>
               </div>
             </li>
@@ -49,10 +57,10 @@
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100 slideshow-image" src="assets/images/one.jpg" alt="First slide">
+          <img class="d-block w-100 slideshow-image" src="assets/images/skype.jpg" alt="First slide">
           <div class="carousel-caption d-none d-md-block slideshow-caption">
-            <h3>Klientų aptarnavimas</h3>
-            <p>Padėsime geriau aptarnauti Jūsų klientus</p>
+            <h3>Skype sistema</h3>
+            <p>Nemokamas ir greitas būdas valdyti savo klientus</p>
           </div>       
         </div>
       </div>
@@ -60,15 +68,31 @@
 
     <div class="container-fluid teikiamos-paslaugos">
       <div class="container">
+        <a href="add.php" class="btn btn-dark col-12">Pridėti naują skype kontaktą</a>
         <div class="row">
-          <div class="col-12 text-white">
-            <h2 class="text-center">
-              <img class="card-image-resize-small" src="assets/images/apklausa.png"> Apklausos telefonu
-            </h2>
-            <p>
-              Klientų apklausos telefonu išlieka vienas efektyviausių būdų greitai sužinoti klientų nuomonę apie Jūsų paslaugas ar produktus, surinkti įvairius klientų atsiliepimus ar net sudominti juos. Gerai suformuluoti klausimynai, apmokyti darbuotojai, struktūrizuotas atsakymų surinkimas tolimesnei jų analizei, - nuo šių ir kitų dalykų priklauso apklausų sėkmė. Džiaugsimės galėdami pasidalinti savo patirtimi ir padėti Jums efektyviai ir palyginus nedidelėmis išlaidomis apklausti savo klientus. 
-            </p>
-        </div>
+          <?php 
+            if ($result = mysqli_query($link, $query)) {
+                while ($row = mysqli_fetch_assoc($result)) {
+          ?>
+            <div class="col-3 offset-1">
+              <div class="card" style="width: 20rem;">
+                <div class="card-body text-white">
+                  <h4 class="card-title">
+                    <img class="card-image-resize-smallest" src="assets/images/skype.png"> 
+                    <?php printf($row['username']); ?>
+                  </h4>
+                    <p>
+                      Paspauskite mygtuką apačioje, norėdami pradėti susirašinėjimą tiesiogiai su vartotoju
+                    </p>
+                    <span class="skype-button rounded" data-contact-id="<?php printf($row['username']); ?>" data-text="Pradėti susirašinėjimą"></span>
+                </div>
+              </div>
+            </div>
+          <?php
+                }
+                mysqli_free_result($result);
+            }
+          ?>
       </div>
     </div>
   </div>
@@ -117,8 +141,7 @@
         </div>
       </div>
     </footer>
-    
-
+    <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
