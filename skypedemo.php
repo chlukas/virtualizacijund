@@ -80,8 +80,8 @@
                     <img class="card-image-resize-smallest" src="assets/images/skype.png"> 
                     <?php printf($row['username']); ?>
                   </h4>
-                    <?php $user = printf($row['username']); ?>
-                   <p><a href="skype:<?= $user ?>?call" class="btn btn-primary">SKAMBINTI</p>
+                    <?php $user = $row['username']; ?>
+                    <p><a href="skype:<?= $user ?>?call" class="btn btn-primary">SKAMBINTI</a></p>
                 </div>
               </div>
             </div>
