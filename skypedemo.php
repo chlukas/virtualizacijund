@@ -80,11 +80,7 @@
                     <img class="card-image-resize-smallest" src="assets/images/skype.png"> 
                     <?php printf($row['username']); ?>
                   </h4>
-                    <p><a href="skype:<?php echo $print($row['username']);?>?call" class="btn btn-primary">SKAMBINTI</p>
-                    <p>
-                      Paspauskite mygtuką apačioje, norėdami pradėti susirašinėjimą tiesiogiai su vartotoju
-                    </p>
-                    <span class="skype-button rounded" data-contact-id="<?php printf($row['username']); ?>" data-text="Pradėti susirašinėjimą"></span>
+                   <p><a href="skype:<?php echo $print($row['username']);?>?call" class="btn btn-primary">SKAMBINTI</p>
                 </div>
               </div>
             </div>
